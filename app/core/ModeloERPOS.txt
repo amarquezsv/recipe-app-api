@@ -1,0 +1,1117 @@
+
+# This is an auto-generated Django model module.
+
+
+class Historialseguimiento(models.Model):
+    idhistorialseguimiento = models.AutoField(
+        db_column='idHistorialSeguimiento', primary_key=True)
+    idproducto = models.IntegerField(db_column='idProducto')
+    estado = models.IntegerField()
+    fechamovimiento = models.DateTimeField(db_column='fechaMovimiento')
+    idusuario = models.IntegerField(db_column='idUsuario')
+
+    class Meta:
+        managed = False
+        db_table = 'HistorialSeguimiento'
+
+
+class Accesos(models.Model):
+    idaccesos = models.AutoField(db_column='idAccesos', primary_key=True)
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto', blank=True, null=True)
+    class Meta:
+        managed = False
+        db_table = 'accesos'
+
+
+class Activofijo(models.Model):
+    idactivofijo = models.AutoField(db_column='idactivoFijo', primary_key=True)
+    idcategoriasaf = models.ForeignKey('Categoriasaf', models.DO_NOTHING, db_column='idCategoriasAF')
+    nombreproducto = models.CharField(db_column='nombreProducto', max_length=50, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    depreciable = models.IntegerField()
+    idtiempodepreciacion = models.ForeignKey('Tiempodepreciacion', models.DO_NOTHING, db_column='idTiempoDepreciacion')  # Field name made lowercase.
+    idmarca = models.ForeignKey('Marcas', models.DO_NOTHING, db_column='idMarca')  # Field name made lowercase.
+    modelo = models.CharField(max_length=50, db_collation='latin1_swedish_ci', blank=True, null=True)
+    serial = models.CharField(max_length=50, db_collation='latin1_swedish_ci', blank=True, null=True)
+    descripcion = models.CharField(max_length=500, db_collation='latin1_swedish_ci', blank=True, null=True)
+    preciocompra = models.FloatField(db_column='precioCompra')  # Field name made lowercase.
+    impuesto = models.FloatField()
+    gastoenvio = models.FloatField(db_column='gastoEnvio')  # Field name made lowercase.
+    costototal = models.FloatField(db_column='costoTotal')  # Field name made lowercase.
+    fechacompra = models.DateField(db_column='fechaCompra')  # Field name made lowercase.
+    fecharecibido = models.DateField(db_column='fechaRecibido')  # Field name made lowercase.
+    fechautilizacion = models.DateField(db_column='fechaUtilizacion')  # Field name made lowercase.
+    idcaja = models.ForeignKey('Caja', models.DO_NOTHING, db_column='idCaja')  # Field name made lowercase.
+    iddepartamento = models.ForeignKey('Departamento', models.DO_NOTHING, db_column='idDepartamento')  # Field name made lowercase.
+    idsubdepartamento = models.ForeignKey('Subdepartamento', models.DO_NOTHING, db_column='idSubDepartamento')  # Field name made lowercase.
+    nombrecarpetaftp = models.CharField(db_column='nombreCarpetaFTP', max_length=10, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+    fechaultimaactualizacion = models.DateTimeField(db_column='fechaUltimaActualizacion')  # Field name made lowercase.
+    idusuariocreacion = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuarioCreacion')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'activofijo'
+
+
+class Arqueogeneral(models.Model):
+    idarqueogeneral = models.AutoField(db_column='idarqueoGeneral', primary_key=True)  # Field name made lowercase.
+    iddetallecaja = models.ForeignKey('Detallecaja', models.DO_NOTHING, db_column='idDetalleCaja')  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    number_001n = models.IntegerField(db_column='001N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_005n = models.IntegerField(db_column='005N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_010n = models.IntegerField(db_column='010N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_025n = models.IntegerField(db_column='025N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_050n = models.IntegerField(db_column='050N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_1n = models.IntegerField(db_column='1N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_5n = models.IntegerField(db_column='5N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_10n = models.IntegerField(db_column='10N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    number_20n = models.IntegerField(db_column='20N')  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    bolsa = models.FloatField(db_column='Bolsa')  # Field name made lowercase.
+    paqueter = models.FloatField(db_column='PAQUETER')  # Field name made lowercase.
+    totalcaja = models.FloatField(db_column='TotalCaja')  # Field name made lowercase.
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+    ultimamodificacion = models.DateTimeField(db_column='ultimaModificacion')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'arqueogeneral'
+
+
+class Caja(models.Model):
+    idcaja = models.AutoField(db_column='idCaja', primary_key=True)  # Field name made lowercase.
+    descripcion = models.CharField(db_column='Descripcion', max_length=255)  # Field name made lowercase.
+    nombrecorto = models.CharField(db_column='nombreCorto', max_length=4, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'caja'
+
+
+class Cajageneral(models.Model):
+    idcajageneral = models.IntegerField(db_column='idCajaGeneral', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(max_length=255)
+    efectivo = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'cajageneral'
+
+
+class Categoriaaf(models.Model):
+    idcategoriaaf = models.AutoField(db_column='idcategoriaAF', primary_key=True)  # Field name made lowercase.
+    nombrecategoria = models.CharField(db_column='nombreCategoria', max_length=75, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'categoriaaf'
+
+
+class Categoriainformacion(models.Model):
+    idcategoria = models.AutoField(db_column='idCategoria', primary_key=True)  # Field name made lowercase.
+    categoria = models.CharField(max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'categoriainformacion'
+
+
+class Categoriasaf(models.Model):
+    idcategoriasaf = models.AutoField(db_column='idCategoriasAF', primary_key=True)  # Field name made lowercase.
+    idcategoriaaf = models.ForeignKey(Categoriaaf, models.DO_NOTHING, db_column='idcategoriaAF')  # Field name made lowercase.
+    idsubcategoriaaf = models.ForeignKey('Subcategoriaaf', models.DO_NOTHING, db_column='idsubCategoriaAF')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'categoriasaf'
+
+
+class Cliente(models.Model):
+    idcliente = models.AutoField(db_column='idCliente', primary_key=True)  # Field name made lowercase.
+    nombrecliente = models.CharField(db_column='nombreCliente', max_length=100, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    estado = models.IntegerField()
+    ruta = models.CharField(max_length=45, db_collation='latin1_swedish_ci')
+
+    class Meta:
+        managed = False
+        db_table = 'cliente'
+
+
+class Compra(models.Model):
+    idcompra = models.AutoField(db_column='idCompra', primary_key=True)  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    fecha = models.DateTimeField()
+    totalpagado = models.FloatField(db_column='totalPagado')  # Field name made lowercase.
+    totalfactura = models.FloatField(db_column='totalFactura', blank=True, null=True)  # Field name made lowercase.
+    iddetallecaja = models.ForeignKey('Detallecaja', models.DO_NOTHING, db_column='idDetalleCaja', blank=True, null=True)  # Field name made lowercase.
+    idvendedor = models.ForeignKey('Vendedor', models.DO_NOTHING, db_column='idVendedor')  # Field name made lowercase.
+    codigo = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=500, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'compra'
+
+
+class Compracredito(models.Model):
+    idcompracredito = models.AutoField(db_column='idCompraCredito', primary_key=True)  # Field name made lowercase.
+    idusuarior = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuarioR')  # Field name made lowercase.
+    idvendedor = models.ForeignKey('Vendedor', models.DO_NOTHING, db_column='idVendedor')  # Field name made lowercase.
+    montor = models.FloatField(db_column='montoR')  # Field name made lowercase.
+    fechar = models.DateTimeField(db_column='fechaR')  # Field name made lowercase.
+    iddetallecaja = models.ForeignKey('Detallecaja', models.DO_NOTHING, db_column='idDetalleCaja', blank=True, null=True)  # Field name made lowercase.
+    idusuariop = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuarioP', blank=True, null=True)  # Field name made lowercase.
+    montop = models.FloatField(db_column='montoP', blank=True, null=True)  # Field name made lowercase.
+    fechap = models.DateTimeField(db_column='fechaP', blank=True, null=True)  # Field name made lowercase.
+    estado = models.CharField(max_length=1)
+    idtiempod = models.ForeignKey('Tiempod', models.DO_NOTHING, db_column='idTiempoD')  # Field name made lowercase.
+    codigo = models.CharField(max_length=100)
+    descripcion = models.CharField(max_length=450, blank=True, null=True)
+    fechatransaccion = models.DateTimeField(db_column='FechaTransaccion', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'compracredito'
+
+
+class Comprascontadoau(models.Model):
+    idcomprascontadoau = models.AutoField(db_column='idcomprasContadoAU', primary_key=True)  # Field name made lowercase.
+    idcompra = models.ForeignKey(Compra, models.DO_NOTHING, db_column='IdCompra')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='IdProducto')  # Field name made lowercase.
+    unidadescompradas = models.IntegerField(db_column='UnidadesCompradas')  # Field name made lowercase.
+    unidadesexistentes = models.IntegerField(db_column='UnidadesExistentes')  # Field name made lowercase.
+    existenciareal = models.IntegerField(db_column='ExistenciaReal')  # Field name made lowercase.
+    idusuario = models.IntegerField(db_column='IdUsuario')  # Field name made lowercase.
+    idestado = models.ForeignKey('Estadocaja', models.DO_NOTHING, db_column='IdEstado')  # Field name made lowercase.
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion', blank=True, null=True)  # Field name made lowercase.
+    fechaactualizacion = models.DateTimeField(db_column='fechaActualizacion', blank=True, null=True)  # Field name made lowercase.
+    fechacierre = models.DateTimeField(db_column='fechaCierre', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'comprascontadoau'
+
+
+class Comprascreditoau(models.Model):
+    idcomprascreditoau = models.AutoField(primary_key=True)
+    idcompracredito = models.ForeignKey(Compracredito, models.DO_NOTHING, db_column='idCompraCredito')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='IdProducto')  # Field name made lowercase.
+    unidadescompradas = models.IntegerField(db_column='UnidadesCompradas')  # Field name made lowercase.
+    unidadesexistentes = models.IntegerField(db_column='UnidadesExistentes')  # Field name made lowercase.
+    existenciareal = models.IntegerField(db_column='ExistenciaReal')  # Field name made lowercase.
+    idusuario = models.IntegerField(db_column='IdUsuario')  # Field name made lowercase.
+    idestado = models.ForeignKey('Estadocaja', models.DO_NOTHING, db_column='IdEstado')  # Field name made lowercase.
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion', blank=True, null=True)  # Field name made lowercase.
+    fechaactualizacion = models.DateTimeField(db_column='fechaActualizacion', blank=True, null=True)  # Field name made lowercase.
+    fechacierre = models.DateTimeField(db_column='fechaCierre', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'comprascreditoau'
+
+
+class Contactar(models.Model):
+    idcontactar = models.AutoField(db_column='idContactar', primary_key=True)  # Field name made lowercase.
+    contactar = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'contactar'
+
+
+class Cotizacion(models.Model):
+    idcotizacion = models.AutoField(db_column='idCotizacion', primary_key=True)  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    fecha = models.DateField()
+    total = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'cotizacion'
+
+
+class Departamento(models.Model):
+    iddepartamento = models.AutoField(db_column='idDepartamento', primary_key=True)  # Field name made lowercase.
+    nombredepartamento = models.CharField(db_column='nombreDepartamento', max_length=50, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'departamento'
+
+
+class Departamentos(models.Model):
+    iddepartamentos = models.AutoField(db_column='idDepartamentos', primary_key=True)  # Field name made lowercase.
+    departamento = models.CharField(max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)
+    idpais = models.ForeignKey('Pais', models.DO_NOTHING, db_column='idPais')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'departamentos'
+
+
+class Detalleingresopc(models.Model):
+    iddetalleingreso = models.PositiveIntegerField(db_column='idDetalleIngreso', primary_key=True)  # Field name made lowercase.
+    detalleingreso = models.CharField(db_column='detalleIngreso', max_length=30)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detalleIngresoPC'
+
+
+class Detallecaja(models.Model):
+    iddetallecaja = models.AutoField(primary_key=True)
+    idcaja = models.ForeignKey(Caja, models.DO_NOTHING, db_column='idcaja')
+    correlativocaja = models.IntegerField(db_column='correlativoCaja')  # Field name made lowercase.
+    aperturadocon = models.FloatField()
+    fechaapertura = models.DateTimeField()
+    idusuarioapertura = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idusuarioapertura')
+    totalingresos = models.FloatField(blank=True, null=True)
+    ganaciatotal = models.FloatField(db_column='ganaciaTotal', blank=True, null=True)  # Field name made lowercase.
+    totalegresos = models.FloatField(blank=True, null=True)
+    ecomprascontado = models.FloatField(db_column='EComprasContado')  # Field name made lowercase.
+    epagoscredito = models.FloatField(db_column='EPagosCredito')  # Field name made lowercase.
+    epagorecibos = models.FloatField(db_column='EPagoRecibos')  # Field name made lowercase.
+    eanulacionesventas = models.FloatField(db_column='EAnulacionesVentas')  # Field name made lowercase.
+    fechacierre = models.DateTimeField(blank=True, null=True)
+    idusuariocierre = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idusuariocierre', blank=True, null=True)
+    idestado = models.ForeignKey('Estadocaja', models.DO_NOTHING, db_column='idestado')
+
+    class Meta:
+        managed = False
+        db_table = 'detallecaja'
+
+
+class Detallecajageneral(models.Model):
+    iddetallecajageneral = models.IntegerField(db_column='idDetalleCajaGeneral', primary_key=True)  # Field name made lowercase.
+    iduser = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUser')  # Field name made lowercase.
+    idtipotransaccion = models.ForeignKey('Transaccionescaja', models.DO_NOTHING, db_column='idTipoTransaccion')  # Field name made lowercase.
+    idcajageneral = models.ForeignKey(Cajageneral, models.DO_NOTHING, db_column='idCajaGeneral')  # Field name made lowercase.
+    efectivo = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'detallecajageneral'
+
+
+class Detallecliente(models.Model):
+    iddetallecliente = models.IntegerField(db_column='idDetalleCliente', primary_key=True)  # Field name made lowercase.
+    idcliente = models.IntegerField(db_column='idCliente')  # Field name made lowercase.
+    idtitulo = models.IntegerField(db_column='idTitulo')  # Field name made lowercase.
+    idtipopersona = models.IntegerField(db_column='idTipoPersona')  # Field name made lowercase.
+    primernombre = models.CharField(db_column='primerNombre', max_length=10, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    segundonombre = models.CharField(db_column='segundoNombre', max_length=10, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    primerapellido = models.CharField(db_column='primerApellido', max_length=10, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    segundoapellido = models.CharField(db_column='segundoApellido', max_length=10, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallecliente'
+
+
+class Detallecompra(models.Model):
+    iddetallecompra = models.AutoField(db_column='idDetalleCompra', primary_key=True)  # Field name made lowercase.
+    idcompra = models.IntegerField(db_column='idCompra')  # Field name made lowercase.
+    idproducto = models.IntegerField(db_column='idProducto')  # Field name made lowercase.
+    unidades = models.IntegerField()
+    preciounitario = models.FloatField(db_column='precioUnitario')  # Field name made lowercase.
+    subtotal = models.FloatField(db_column='subTotal')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallecompra'
+
+
+class Detallecompracredito(models.Model):
+    iddetallecompracredito = models.AutoField(db_column='idDetalleCompraCredito', primary_key=True)  # Field name made lowercase.
+    idcompracredito = models.ForeignKey(Compracredito, models.DO_NOTHING, db_column='idCompraCredito')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    unidades = models.IntegerField(db_column='Unidades')  # Field name made lowercase.
+    preciounitario = models.FloatField(db_column='PrecioUnitario')  # Field name made lowercase.
+    subtotal = models.FloatField(db_column='SubTotal')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallecompracredito'
+
+
+class Detallecotizacion(models.Model):
+    iddetallecotizacion = models.AutoField(db_column='idDetalleCotizacion', primary_key=True)  # Field name made lowercase.
+    idcotizacion = models.ForeignKey(Cotizacion, models.DO_NOTHING, db_column='idCotizacion')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    unidades = models.IntegerField()
+    preciounitario = models.FloatField(db_column='precioUnitario')  # Field name made lowercase.
+    subtotal = models.FloatField(db_column='subTotal')  # Field name made lowercase.
+    descuentoextra = models.FloatField(db_column='descuentoExtra')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallecotizacion'
+
+
+class Detalledevolucion(models.Model):
+    iddetalledevolucion = models.AutoField(db_column='idDetalleDevolucion', primary_key=True)  # Field name made lowercase.
+    iddevolucion = models.ForeignKey('Devolucion', models.DO_NOTHING, db_column='idDevolucion')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    unidadesfactura = models.IntegerField(db_column='unidadesFactura')  # Field name made lowercase.
+    unidadesdevolver = models.IntegerField(db_column='UnidadesDevolver')  # Field name made lowercase.
+    preciounitario = models.FloatField(db_column='PrecioUnitario')  # Field name made lowercase.
+    subtotal = models.FloatField(db_column='SubTotal')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detalledevolucion'
+
+
+class Detallefactura(models.Model):
+    iddetallefactura = models.AutoField(db_column='idDetalleFactura', primary_key=True)  # Field name made lowercase.
+    idfactura = models.ForeignKey('Factura', models.DO_NOTHING, db_column='idFactura')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    unidades = models.IntegerField()
+    preciounitario = models.FloatField(db_column='precioUnitario')  # Field name made lowercase.
+    subtotal = models.FloatField(db_column='subTotal')  # Field name made lowercase.
+    preciocompraunidad = models.FloatField(db_column='precioCompraUnidad')  # Field name made lowercase.
+    ganacia = models.FloatField()
+    udisponibles = models.IntegerField(db_column='UDisponibles')  # Field name made lowercase.
+    descuentoextra = models.FloatField(db_column='descuentoExtra')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallefactura'
+
+
+class Detallefacturacliente(models.Model):
+    iddetallefacturacliente = models.AutoField(db_column='idDetalleFacturaCliente', primary_key=True)  # Field name made lowercase.
+    idfactura = models.IntegerField(db_column='idFactura')  # Field name made lowercase.
+    anombrede = models.CharField(db_column='aNombreDe', max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    direccion = models.CharField(max_length=150, db_collation='latin1_swedish_ci', blank=True, null=True)
+    departamentotexto = models.CharField(db_column='departamentoTexto', max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    municipiotexto = models.CharField(db_column='municipioTexto', max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    nit = models.CharField(db_column='NIT', max_length=17, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    ncr = models.CharField(db_column='NCR', max_length=10, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    girotexto = models.CharField(db_column='GiroTexto', max_length=75, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    idcliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='idCliente')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallefacturacliente'
+
+
+class Detalleprocesokardex(models.Model):
+    idproceso = models.ForeignKey('Procesoskardex', models.DO_NOTHING, db_column='idProceso')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    preciocompra = models.FloatField(db_column='precioCompra')  # Field name made lowercase.
+    preciosugerido = models.FloatField(db_column='precioSugerido')  # Field name made lowercase.
+    precioventa = models.FloatField(db_column='precioVenta')  # Field name made lowercase.
+    existenciasactuales = models.IntegerField(db_column='existenciasActuales')  # Field name made lowercase.
+    totalvendidas = models.IntegerField(db_column='totalVendidas')  # Field name made lowercase.
+    compracontado = models.IntegerField(db_column='compraContado')  # Field name made lowercase.
+    compracredito = models.IntegerField(db_column='compraCredito')  # Field name made lowercase.
+    totalcompras = models.IntegerField(db_column='totalCompras')  # Field name made lowercase.
+    idtabla = models.AutoField(db_column='idTabla', primary_key=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detalleprocesokardex'
+
+
+class Detalleubucacion(models.Model):
+    iddetalleubicacion = models.AutoField(db_column='idDetalleUbicacion', primary_key=True)  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    idubicacion = models.ForeignKey('Ubicacion', models.DO_NOTHING, db_column='idUbicacion')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detalleubucacion'
+
+
+class Detallevendedor(models.Model):
+    iddetallevendedor = models.AutoField(db_column='idDetalleVendedor', primary_key=True)  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    idvendedor = models.ForeignKey('Vendedor', models.DO_NOTHING, db_column='idVendedor')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'detallevendedor'
+
+
+class Devolucion(models.Model):
+    iddevolucion = models.AutoField(primary_key=True)
+    idfactura = models.ForeignKey('Factura', models.DO_NOTHING, db_column='idFactura')  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    idmotivodevolucion = models.ForeignKey('Motivodevolucion', models.DO_NOTHING, db_column='idMotivoDevolucion')  # Field name made lowercase.
+    fecha = models.DateTimeField()
+    totaldevuelto = models.FloatField(db_column='totalDevuelto')  # Field name made lowercase.
+    iddetallecaja = models.ForeignKey(Detallecaja, models.DO_NOTHING, db_column='idDetalleCaja')  # Field name made lowercase.
+    print = models.IntegerField(blank=True, null=True)
+    tipodevolucion = models.IntegerField(db_column='tipoDevolucion', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'devolucion'
+
+
+class Direccion(models.Model):
+    iddireccion = models.AutoField(db_column='idDireccion', primary_key=True)  # Field name made lowercase.
+    iddepartamento = models.IntegerField(db_column='idDepartamento')  # Field name made lowercase.
+    idmunicipio = models.IntegerField(db_column='idMunicipio')  # Field name made lowercase.
+    txtdireccion = models.CharField(db_column='txtDireccion', max_length=100, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'direccion'
+
+
+class Direccioncliente(models.Model):
+    iddireccioncliente = models.AutoField(db_column='idDireccionCliente', primary_key=True)  # Field name made lowercase.
+    idcliente = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='idCliente')  # Field name made lowercase.
+    idcategoria = models.ForeignKey(Categoriainformacion, models.DO_NOTHING, db_column='idCategoria')  # Field name made lowercase.
+    iddireccion = models.ForeignKey(Direccion, models.DO_NOTHING, db_column='idDireccion')  # Field name made lowercase.
+    principal = models.BigIntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'direccioncliente'
+
+
+class Documentocliente(models.Model):
+    iddocumentocliente = models.AutoField(db_column='iddocumentoCliente', primary_key=True)  # Field name made lowercase.
+    iddocumento = models.IntegerField(db_column='idDocumento')  # Field name made lowercase.
+    idcliente = models.IntegerField(db_column='idCliente')  # Field name made lowercase.
+    nrodocumento = models.CharField(db_column='nroDocumento', max_length=15, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'documentocliente'
+
+
+class Estadoproductocontrolado(models.Model):
+    idestadopc = models.PositiveIntegerField(db_column='idEstadoPC', primary_key=True)  # Field name made lowercase.
+    estadopc = models.CharField(db_column='EstadoPC', max_length=30)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'estadoProductoControlado'
+
+
+class Estadocaja(models.Model):
+    idestado = models.AutoField(db_column='idEstado', primary_key=True)  # Field name made lowercase.
+    estado = models.CharField(max_length=45)
+
+    class Meta:
+        managed = False
+        db_table = 'estadocaja'
+
+
+class Estadodocumentolegal(models.Model):
+    idestadodocumentolegal = models.AutoField(db_column='idEstadoDocumentoLegal', primary_key=True)  # Field name made lowercase.
+    estadoducumentolegal = models.CharField(db_column='EstadoDucumentoLegal', max_length=50)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'estadodocumentolegal'
+
+
+class Factura(models.Model):
+    idfactura = models.AutoField(db_column='idFactura', primary_key=True)  # Field name made lowercase.
+    correlativocaja = models.IntegerField(db_column='correlativoCaja')  # Field name made lowercase.
+    correlativoapertura = models.IntegerField(db_column='correlativoApertura')  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    fecha = models.DateTimeField()
+    total = models.FloatField()
+    totalcancelado = models.FloatField(db_column='totalCancelado')  # Field name made lowercase.
+    vuelto = models.FloatField()
+    totalgancia = models.FloatField(db_column='totalGancia')  # Field name made lowercase.
+    iddetallecaja = models.IntegerField(db_column='idDetalleCaja')  # Field name made lowercase.
+    print = models.IntegerField()
+    aunulada = models.IntegerField()
+    idformapago = models.ForeignKey('Formapago', models.DO_NOTHING, db_column='idFormaPago')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'factura'
+
+
+class Facturalegal(models.Model):
+    idfacturalegal = models.IntegerField(db_column='idFacturaLegal', primary_key=True)  # Field name made lowercase.
+    correlativofactura = models.IntegerField(db_column='CorrelativoFactura')  # Field name made lowercase.
+    correlativocaja = models.IntegerField(db_column='correlativoCaja')  # Field name made lowercase.
+    idtirajefactura = models.IntegerField(db_column='idTirajeFactura')  # Field name made lowercase.
+    idfactura = models.ForeignKey(Factura, models.DO_NOTHING, db_column='idFactura')  # Field name made lowercase.
+    fecha = models.DateTimeField()
+    idcaja = models.IntegerField(db_column='idCaja')  # Field name made lowercase.
+    idestadodocumentolegal = models.ForeignKey(Estadodocumentolegal, models.DO_NOTHING, db_column='idEstadoDocumentoLegal')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'facturalegal'
+
+
+class Fechavencimiento(models.Model):
+    idfechavencimiento = models.AutoField(db_column='idFechaVencimiento', primary_key=True)  # Field name made lowercase.
+    fecha = models.DateField()
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'fechavencimiento'
+
+
+class Formapago(models.Model):
+    idformapago = models.AutoField(db_column='idFormaPago', primary_key=True)  # Field name made lowercase.
+    formapago = models.CharField(db_column='formaPago', max_length=45, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'formapago'
+
+
+class Historialcambioestadopro(models.Model):
+    idhistorialcambioestado = models.IntegerField(db_column='idHistorialCambioEstado', primary_key=True)  # Field name made lowercase.
+    idmotivo = models.IntegerField(db_column='idMotivo')  # Field name made lowercase.
+    idproducto = models.IntegerField(db_column='idProducto')  # Field name made lowercase.
+    idusuario = models.IntegerField(db_column='idUsuario')  # Field name made lowercase.
+    fechatransaccion = models.DateTimeField(db_column='fechaTransaccion')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'historialcambioestadopro'
+
+
+class Imagenes(models.Model):
+    idimagen = models.AutoField(db_column='idImagen', primary_key=True)  # Field name made lowercase.
+    image = models.TextField()
+    size = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'imagenes'
+
+
+class Imagenescompraproductocontado(models.Model):
+    idimagen = models.AutoField(db_column='idImagen', primary_key=True)  # Field name made lowercase.
+    idcompra = models.ForeignKey(Compra, models.DO_NOTHING, db_column='idCompra')  # Field name made lowercase.
+    image = models.TextField()
+    size = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'imagenescompraproductocontado'
+
+
+class Imagenescompraproductocredito(models.Model):
+    idimagen = models.AutoField(db_column='idImagen', primary_key=True)  # Field name made lowercase.
+    idcompracredito = models.ForeignKey(Compracredito, models.DO_NOTHING, db_column='idCompraCredito')  # Field name made lowercase.
+    image = models.TextField()
+    size = models.BigIntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'imagenescompraproductocredito'
+
+
+class Imagenesrecibo(models.Model):
+    idimagen = models.AutoField(db_column='idImagen', primary_key=True)  # Field name made lowercase.
+    idpagorecibo = models.ForeignKey('Pagorecibo', models.DO_NOTHING, db_column='idPagoRecibo')  # Field name made lowercase.
+    image = models.TextField()
+    size = models.BigIntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'imagenesrecibo'
+
+
+class Imagenpagocontadoftp(models.Model):
+    idimgccontado = models.AutoField(db_column='idIMGCContado', primary_key=True)  # Field name made lowercase.
+    idcompracontado = models.ForeignKey(Compra, models.DO_NOTHING, db_column='idCompraContado')  # Field name made lowercase.
+    ruta = models.CharField(max_length=100)
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    jpg = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'imagenpagocontadoftp'
+
+
+class Imagenpagocreditoftp(models.Model):
+    idimgccredito = models.AutoField(db_column='idIMGCCredito', primary_key=True)  # Field name made lowercase.
+    idcompracredito = models.ForeignKey(Compracredito, models.DO_NOTHING, db_column='idCompraCredito')  # Field name made lowercase.
+    ruta = models.CharField(max_length=100)
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    jpg = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'imagenpagocreditoftp'
+
+
+class Imagenreciboftp(models.Model):
+    idimagenreciboftp = models.AutoField(primary_key=True)
+    idpagorecibo = models.ForeignKey('Pagorecibo', models.DO_NOTHING, db_column='idPagoRecibo')  # Field name made lowercase.
+    ruta = models.CharField(max_length=100)
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    jpg = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'imagenreciboftp'
+
+
+class Imftp(models.Model):
+    idimftp = models.AutoField(primary_key=True)
+    server = models.CharField(max_length=45)
+    usr = models.CharField(max_length=45)
+    psw = models.CharField(max_length=45)
+    pagorecibo = models.CharField(db_column='pagoRecibo', max_length=45)  # Field name made lowercase.
+    compracontado = models.CharField(db_column='compraContado', max_length=45)  # Field name made lowercase.
+    compracredito = models.CharField(db_column='compraCredito', max_length=45)  # Field name made lowercase.
+    documentoventa = models.CharField(db_column='documentoVenta', max_length=45)  # Field name made lowercase.
+    cliente = models.CharField(db_column='Cliente', max_length=45)  # Field name made lowercase.
+    producto = models.CharField(max_length=45)
+    activofijo = models.CharField(db_column='activoFijo', max_length=45)  # Field name made lowercase.
+    ipserver = models.CharField(db_column='ipServer', max_length=45)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'imftp'
+
+
+class Informaciongeneral(models.Model):
+    idinformaciongeneral = models.AutoField(db_column='idInformacionGeneral', primary_key=True)  # Field name made lowercase.
+    idcaja = models.ForeignKey(Caja, models.DO_NOTHING, db_column='idCaja')  # Field name made lowercase.
+    nombre = models.CharField(max_length=50, blank=True, null=True)
+    direccion = models.CharField(db_column='Direccion', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    contacto = models.CharField(max_length=100, blank=True, null=True)
+    encabezadotreslineas = models.TextField(db_column='encabezadoTresLineas', blank=True, null=True)  # Field name made lowercase.
+    segundaencabezadotreslineas = models.CharField(db_column='SegundaEncabezadoTresLineas', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    nombrelargo = models.CharField(db_column='nombreLargo', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    nombresistemacorto = models.CharField(db_column='nombreSistemaCorto', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    informacionsistemalargo = models.CharField(db_column='informacionSistemaLargo', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    pse = models.IntegerField(db_column='PSE', blank=True, null=True)  # Field name made lowercase.
+    correo = models.CharField(max_length=50, blank=True, null=True)
+    psw = models.CharField(max_length=100, blank=True, null=True)
+    puerto = models.IntegerField(blank=True, null=True)
+    smtp = models.CharField(max_length=100, blank=True, null=True)
+    destinatarios = models.CharField(db_column='Destinatarios', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    piecorreo = models.CharField(db_column='pieCorreo', max_length=100, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'informaciongeneral'
+
+
+class Inventario(models.Model):
+    idinventario = models.AutoField(db_column='idInventario', primary_key=True)  # Field name made lowercase.
+    fechainicio = models.DateTimeField(db_column='fechaInicio')  # Field name made lowercase.
+    fechafin = models.DateTimeField(db_column='fechaFin', blank=True, null=True)  # Field name made lowercase.
+    usuarioapertura = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='UsuarioApertura', blank=True, null=True)  # Field name made lowercase.
+    usuariocierre = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='UsuarioCierre', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'inventario'
+
+
+class Laboratorio(models.Model):
+    idlaboratorio = models.AutoField(db_column='idLaboratorio', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(db_column='Nombre', max_length=255)  # Field name made lowercase.
+    descripcion = models.CharField(db_column='Descripcion', max_length=255)  # Field name made lowercase.
+    contacto1 = models.CharField(max_length=15, blank=True, null=True)
+    contacto2 = models.CharField(max_length=15, blank=True, null=True)
+    contacto3 = models.CharField(max_length=15, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'laboratorio'
+
+
+class Marcas(models.Model):
+    idmarca = models.AutoField(db_column='idMarca', primary_key=True)  # Field name made lowercase.
+    nombremarca = models.CharField(db_column='nombreMarca', max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'marcas'
+
+
+class Modificacionproducto(models.Model):
+    idmodificacionproducto = models.AutoField(db_column='idModificacionProducto', primary_key=True)  # Field name made lowercase.
+    motivo = models.CharField(max_length=100)
+
+    class Meta:
+        managed = False
+        db_table = 'modificacionproducto'
+
+
+class Modificacionproductos(models.Model):
+    idmodificacionproductos = models.AutoField(db_column='idModificacionProductos', primary_key=True)  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    idproducto = models.ForeignKey('Producto', models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    idmotivomodificacion = models.ForeignKey(Modificacionproducto, models.DO_NOTHING, db_column='idMotivoModificacion')  # Field name made lowercase.
+    fechamodificacion = models.DateTimeField(db_column='fechaModificacion')  # Field name made lowercase.
+    unidades = models.IntegerField()
+    nuevasunidades = models.IntegerField(db_column='nuevasUnidades')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'modificacionproductos'
+
+
+class Motivodevolucion(models.Model):
+    idmotivo = models.AutoField(db_column='idMotivo', primary_key=True)  # Field name made lowercase.
+    motivo = models.CharField(max_length=150, db_collation='latin1_swedish_ci')
+
+    class Meta:
+        managed = False
+        db_table = 'motivodevolucion'
+
+
+class Motivoestadoproducto(models.Model):
+    idmotivo = models.IntegerField(db_column='idMotivo', primary_key=True)  # Field name made lowercase.
+    motivo = models.CharField(max_length=100, db_collation='latin1_swedish_ci', blank=True, null=True)
+    tipomotivo = models.CharField(db_column='tipoMotivo', max_length=1, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'motivoestadoproducto'
+
+
+class Municipio(models.Model):
+    idmunicipio = models.AutoField(db_column='idMunicipio', primary_key=True)  # Field name made lowercase.
+    municipio = models.CharField(max_length=45, db_collation='latin1_swedish_ci')
+    iddepartamentos = models.ForeignKey(Departamentos, models.DO_NOTHING, db_column='idDepartamentos')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'municipio'
+
+
+class Pagorecibo(models.Model):
+    idpagorecibo = models.AutoField(db_column='idPagoRecibo', primary_key=True)  # Field name made lowercase.
+    iddetallecaja = models.ForeignKey(Detallecaja, models.DO_NOTHING, db_column='idDetalleCaja')  # Field name made lowercase.
+    idusario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsario')  # Field name made lowercase.
+    fechatransaccion = models.DateTimeField(db_column='fechaTransaccion')  # Field name made lowercase.
+    fechavencimiento = models.DateTimeField(db_column='fechaVencimiento')  # Field name made lowercase.
+    numero = models.CharField(max_length=50)
+    valor = models.FloatField()
+    anombrede = models.CharField(db_column='aNombreDe', max_length=250)  # Field name made lowercase.
+    concepto = models.CharField(max_length=250)
+    idtiporecibo = models.ForeignKey('Tiporecibo', models.DO_NOTHING, db_column='idTipoRecibo')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'pagorecibo'
+
+
+class Pais(models.Model):
+    idpais = models.AutoField(db_column='idPais', primary_key=True)  # Field name made lowercase.
+    pais = models.CharField(max_length=45, db_collation='latin1_swedish_ci')
+
+    class Meta:
+        managed = False
+        db_table = 'pais'
+
+
+class Plantillaventa(models.Model):
+    idplantillaventa = models.AutoField(db_column='idplantillaVenta', primary_key=True)  # Field name made lowercase.
+    idtipodocumentoventa = models.ForeignKey('Tipodocumentoventa', models.DO_NOTHING, db_column='idtipoDocumentoVenta')  # Field name made lowercase.
+    nombreplantilla = models.CharField(db_column='nombrePlantilla', max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+    imagen = models.CharField(max_length=45, db_collation='latin1_swedish_ci', blank=True, null=True)
+    nombreclasereflection = models.CharField(db_column='nombreClaseReflection', max_length=100, db_collation='latin1_swedish_ci', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'plantillaventa'
+
+
+class Presentacion(models.Model):
+    idpresentacion = models.AutoField(db_column='idPresentacion', primary_key=True)  # Field name made lowercase.
+    presentacion = models.CharField(max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'presentacion'
+
+
+class Procesoskardex(models.Model):
+    idproceso = models.AutoField(db_column='idProceso', primary_key=True)  # Field name made lowercase.
+    idusuario = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuario')  # Field name made lowercase.
+    fechaproceso = models.DateTimeField(db_column='fechaProceso')  # Field name made lowercase.
+    mes = models.IntegerField()
+    year = models.IntegerField()
+    descripcion = models.CharField(max_length=250, db_collation='latin1_swedish_ci', blank=True, null=True)
+    historico = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'procesoskardex'
+
+
+class Producto(models.Model):
+    idproducto = models.AutoField(db_column='idProducto', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(max_length=255)
+    codigo = models.CharField(max_length=50)
+    descripcion = models.CharField(max_length=255)
+    ingredientes = models.CharField(max_length=255, blank=True, null=True)
+    estado = models.IntegerField()
+    idlaboratorio = models.ForeignKey(Laboratorio, models.DO_NOTHING, db_column='idLaboratorio')  # Field name made lowercase.
+    preciocompra = models.FloatField(db_column='precioCompra')  # Field name made lowercase.
+    preciosugerido = models.FloatField(db_column='precioSugerido')  # Field name made lowercase.
+    precioventa = models.FloatField(db_column='precioVenta')  # Field name made lowercase.
+    porcentajedescuent = models.FloatField(db_column='porcentajeDescuent', blank=True, null=True)  # Field name made lowercase.
+    idpresentacion = models.ForeignKey(Presentacion, models.DO_NOTHING, db_column='idPresentacion')  # Field name made lowercase.
+    ventaunitaria = models.IntegerField(db_column='ventaUnitaria', blank=True, null=True)  # Field name made lowercase.
+    unidades = models.IntegerField(blank=True, null=True)
+    preciounidad = models.FloatField(db_column='precioUnidad', blank=True, null=True)  # Field name made lowercase.
+    devolucion = models.IntegerField(blank=True, null=True)
+    idtiempod = models.ForeignKey('Tiempod', models.DO_NOTHING, db_column='idTiempoD', blank=True, null=True)  # Field name made lowercase.
+    idcontactar = models.ForeignKey(Contactar, models.DO_NOTHING, db_column='idContactar', blank=True, null=True)  # Field name made lowercase.
+    totalproductos = models.IntegerField(db_column='totalProductos')  # Field name made lowercase.
+    plu = models.CharField(db_column='PLU', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    idimagen = models.ForeignKey(Imagenes, models.DO_NOTHING, db_column='idImagen', blank=True, null=True)  # Field name made lowercase.
+    imgftp = models.IntegerField(db_column='imgFTP', blank=True, null=True)  # Field name made lowercase.
+    idproductoequivalente = models.IntegerField(db_column='idProductoEquivalente')  # Field name made lowercase.
+    seguimiento = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'producto'
+
+
+class Productoagotado(models.Model):
+    idproductoagotado = models.AutoField(primary_key=True)
+    idproducto = models.ForeignKey(Producto, models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    idfactura = models.ForeignKey(Factura, models.DO_NOTHING, db_column='idFactura')  # Field name made lowercase.
+    fecha = models.DateTimeField()
+    unidades = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'productoagotado'
+
+
+class Productosubicacioninventario(models.Model):
+    idproductosubicacioninventario = models.AutoField(db_column='idProductosUbicacionInventario', primary_key=True)  # Field name made lowercase.
+    idproducto = models.ForeignKey(Producto, models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    existenciassistema = models.IntegerField(db_column='ExistenciasSistema')  # Field name made lowercase.
+    existenciasreal = models.IntegerField(db_column='ExistenciasReal')  # Field name made lowercase.
+    idubicacioninventario = models.ForeignKey('Ubicacioninventario', models.DO_NOTHING, db_column='idUbicacionInventario')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'productosubicacioninventario'
+        unique_together = (('idproductosubicacioninventario', 'idproducto', 'existenciasreal', 'existenciassistema', 'idubicacioninventario'),)
+
+
+class Roll(models.Model):
+    idrol = models.AutoField(db_column='idRol', primary_key=True)  # Field name made lowercase.
+    tipo = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'roll'
+
+
+class Seguimientolote(models.Model):
+    idslote = models.IntegerField(db_column='idSLote', primary_key=True)  # Field name made lowercase.
+    idproducto = models.ForeignKey(Producto, models.DO_NOTHING, db_column='idProducto')  # Field name made lowercase.
+    idtipoingreso = models.IntegerField(db_column='idTipoIngreso')  # Field name made lowercase.
+    idestado = models.IntegerField(db_column='idEstado')  # Field name made lowercase.
+    lote = models.CharField(max_length=45)
+    mesvencimiento = models.IntegerField(db_column='mesVencimiento')  # Field name made lowercase.
+    aniovencimiento = models.IntegerField(db_column='anioVencimiento')  # Field name made lowercase.
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+    idcompra = models.IntegerField(db_column='idCompra', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'seguimientoLote'
+
+
+class Subcategoriaaf(models.Model):
+    idsubcategoriaaf = models.AutoField(db_column='idsubCategoriaAF', primary_key=True)  # Field name made lowercase.
+    nombresubcategoria = models.CharField(db_column='nombreSubCategoria', max_length=75, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'subcategoriaaf'
+
+
+class Subdepartamento(models.Model):
+    idsubdepartamento = models.AutoField(db_column='idsubDepartamento', primary_key=True)  # Field name made lowercase.
+    nombresubdepartamento = models.CharField(db_column='nombreSubDepartamento', max_length=45, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    iddepartamento = models.ForeignKey(Departamento, models.DO_NOTHING, db_column='idDepartamento')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'subdepartamento'
+
+
+class Telefonocliente(models.Model):
+    idtelefonocliente = models.AutoField(db_column='idTelefonoCliente', primary_key=True)  # Field name made lowercase.
+    idcliente = models.IntegerField(db_column='idCliente')  # Field name made lowercase.
+    idcategoria = models.IntegerField(db_column='idCategoria')  # Field name made lowercase.
+    numerotelefonico = models.CharField(db_column='numeroTelefonico', max_length=20, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    principal = models.BigIntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'telefonocliente'
+
+
+class Tiempod(models.Model):
+    idtiempod = models.AutoField(db_column='idTiempoD', primary_key=True)  # Field name made lowercase.
+    texto = models.CharField(max_length=255)
+    dias = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'tiempod'
+
+
+class Tiempodepreciacion(models.Model):
+    idtiempodepreciacion = models.AutoField(db_column='idTiempoDepreciacion', primary_key=True)  # Field name made lowercase.
+    tiempo = models.CharField(max_length=45, db_collation='latin1_swedish_ci')
+    meses = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'tiempodepreciacion'
+
+
+class Tipodocumento(models.Model):
+    iddocumento = models.AutoField(db_column='idDocumento', primary_key=True)  # Field name made lowercase.
+    nombrelargodocumento = models.CharField(db_column='nombreLargoDocumento', max_length=45, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    nombrecortodocumento = models.CharField(db_column='nombreCortoDocumento', max_length=5, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+    longitudmaxima = models.IntegerField(db_column='longitudMaxima')  # Field name made lowercase.
+    longitudminima = models.IntegerField(db_column='longitudMinima')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'tipodocumento'
+
+
+class Tipodocumentoventa(models.Model):
+    idtipodocumentoventa = models.AutoField(db_column='idtipoDocumentoVenta', primary_key=True)  # Field name made lowercase.
+    idcaja = models.ForeignKey(Caja, models.DO_NOTHING, db_column='idCaja')  # Field name made lowercase.
+    tipodocumento = models.CharField(db_column='tipoDocumento', max_length=45, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'tipodocumentoventa'
+
+
+class Tipopersona(models.Model):
+    idtipopersona = models.AutoField(db_column='idTipoPersona', primary_key=True)  # Field name made lowercase.
+    tipopersona = models.CharField(db_column='tipoPersona', max_length=45, db_collation='latin1_swedish_ci')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'tipopersona'
+
+
+class Tiporecibo(models.Model):
+    idtiporecibo = models.IntegerField(db_column='idTipoRecibo', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(max_length=50)
+
+    class Meta:
+        managed = False
+        db_table = 'tiporecibo'
+
+
+class Tirajefactura(models.Model):
+    idtirajefactura = models.AutoField(db_column='idTirajeFactura', primary_key=True)  # Field name made lowercase.
+    idcaja = models.ForeignKey(Caja, models.DO_NOTHING, db_column='idCaja')  # Field name made lowercase.
+    correlativocaja = models.IntegerField(db_column='CorrelativoCaja')  # Field name made lowercase.
+    codigounico = models.CharField(db_column='CodigoUnico', max_length=45)  # Field name made lowercase.
+    resolucion = models.CharField(db_column='Resolucion', max_length=45)  # Field name made lowercase.
+    totalautorizados = models.IntegerField(db_column='totalAutorizados')  # Field name made lowercase.
+    prefijo = models.CharField(max_length=45)
+    fechaautorizacion = models.DateTimeField(db_column='fechaAutorizacion')  # Field name made lowercase.
+    ultimoutilizado = models.IntegerField(db_column='ultimoUtilizado')  # Field name made lowercase.
+    activo = models.IntegerField()
+    idusuariocrea = models.ForeignKey('Usuario', models.DO_NOTHING, db_column='idUsuarioCrea')  # Field name made lowercase.
+    fechacreacion = models.DateTimeField(db_column='fechaCreacion')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'tirajefactura'
+
+
+class Titulopersona(models.Model):
+    idtitulo = models.AutoField(db_column='idTitulo', primary_key=True)  # Field name made lowercase.
+    titulo = models.CharField(max_length=45, db_collation='latin1_swedish_ci')
+    abreviacion = models.CharField(max_length=6, db_collation='latin1_swedish_ci')
+
+    class Meta:
+        managed = False
+        db_table = 'titulopersona'
+
+
+class Transaccionescaja(models.Model):
+    idtransaccionescaja = models.AutoField(db_column='idTransaccionesCaja', primary_key=True)  # Field name made lowercase.
+    tipotransaccion = models.CharField(db_column='TipoTransaccion', max_length=255)  # Field name made lowercase.
+    signo = models.CharField(max_length=1)
+
+    class Meta:
+        managed = False
+        db_table = 'transaccionescaja'
+
+
+class Ubicacion(models.Model):
+    idubicacion = models.AutoField(db_column='idUbicacion', primary_key=True)  # Field name made lowercase.
+    ubicacion = models.CharField(max_length=255)
+    idcaja = models.ForeignKey(Caja, models.DO_NOTHING, db_column='idCaja')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'ubicacion'
+
+
+class Ubicacioninventario(models.Model):
+    idubicacioninventario = models.AutoField(db_column='idUbicacionInventario', primary_key=True)  # Field name made lowercase.
+    idubicacion = models.ForeignKey(Ubicacion, models.DO_NOTHING, db_column='IdUbicacion')  # Field name made lowercase.
+    idinventario = models.ForeignKey(Inventario, models.DO_NOTHING, db_column='IdInventario')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'ubicacioninventario'
+        unique_together = (('idubicacioninventario', 'idubicacion', 'idinventario'),)
+
+
+class Unidadesminimascolores(models.Model):
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=45)
+    colorargb = models.IntegerField(db_column='colorArgb')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'unidadesminimascolores'
+
+
+class Usuario(models.Model):
+    idusuario = models.AutoField(db_column='idUsuario', primary_key=True)  # Field name made lowercase.
+    nombres = models.CharField(max_length=100)
+    apellidos = models.CharField(max_length=100)
+    username = models.CharField(db_column='userName', unique=True, max_length=45)  # Field name made lowercase.
+    password = models.CharField(max_length=255)
+    idrol = models.ForeignKey(Roll, models.DO_NOTHING, db_column='idRol')  # Field name made lowercase.
+    active = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'usuario'
+
+
+class Vendedor(models.Model):
+    idvendedor = models.AutoField(db_column='idVendedor', primary_key=True)  # Field name made lowercase.
+    nombre = models.CharField(db_column='Nombre', max_length=255)  # Field name made lowercase.
+    descripcion = models.CharField(db_column='Descripcion', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    contacto1 = models.CharField(max_length=15, blank=True, null=True)
+    contacto2 = models.CharField(max_length=15, blank=True, null=True)
+    contacto3 = models.CharField(max_length=15, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'vendedor'
